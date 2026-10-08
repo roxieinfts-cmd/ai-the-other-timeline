@@ -1,16 +1,23 @@
 # AI: The Other Timeline
 
-Interactive narrative game prototype based on the team's GDD and visual design guide.
+An interactive narrative game prototype about how different AI choices shape the same school project.
 
 ## Play
 
-The playable build is stored in `dist/`. Open `dist/index.html` through a static web server.
+Open the GitHub Pages link in the repository description, or open `index.html` through any static web server.
 
-## Edit
+## What to edit
 
-- `dist/content.js` — story stages, choices and narrative copy
-- `dist/game.js` — game state, scoring and timeline logic
-- `dist/styles.css` — responsive visual system
-- `dist/assets/` — original pixel-art backgrounds
+- `content.js` — story stages, choices and narrative copy
+- `game.js` — game state, scoring and timeline logic
+- `styles.css` — responsive visual system
+- `assets/` — original pixel-art backgrounds
+
+## Team workflow
+
+1. Create a branch for each change.
+2. Edit the relevant file and test the full story flow.
+3. Open a pull request and ask one teammate to review it.
+4. Merge into `main`; GitHub Pages will update automatically.
 
 The prototype uses scripted AI, simulated school data and simulated game scores. It does not present these as validated real-world evidence.
