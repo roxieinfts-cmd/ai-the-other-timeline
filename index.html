@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#262b44">
+  <meta name="description" content="AI: The Other Timeline — an interactive narrative game about how students use AI while completing the same school project.">
+  <title>AI: The Other Timeline</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pixelify+Sans:wght@500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="game" class="game-shell scene-title">
+    <section class="game-stage" aria-live="polite">
+      <div class="scene-art" aria-hidden="true"></div>
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="eyebrow">HORIZON SECONDARY</span>
+          <strong>AI: THE OTHER TIMELINE</strong>
+        </div>
+        <div class="status-strip" id="statusStrip" hidden>
+          <span id="timelineStatus">TIMELINE A</span>
+          <span id="dayStatus">MONDAY</span>
+          <span id="timeStatus">3:30 PM</span>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="notesButton" type="button" aria-label="Open My Notes" hidden>NOTES</button>
+          <button class="icon-button" id="soundButton" type="button" aria-label="Toggle sound" aria-pressed="false">SOUND OFF</button>
+        </div>
+      </header>
+
+      <section id="screen" class="screen"></section>
+
+      <footer class="stage-footer">
+        <div class="progress-dots" id="progressDots" aria-label="Story progress"></div>
+        <p id="sourceLabel">A scripted interactive prototype. No live AI is used.</p>
+      </footer>
+    </section>
+  </main>
+
+  <dialog id="notesDialog" class="notes-dialog">
+    <div class="dialog-head">
+      <div>
+        <span class="eyebrow">JAMIE'S JOURNAL</span>
+        <h2>My Notes</h2>
+      </div>
+      <button id="closeNotes" class="icon-button" type="button">CLOSE</button>
+    </div>
+    <div id="notesContent" class="notes-list"></div>
+  </dialog>
+
+  <script src="content.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
