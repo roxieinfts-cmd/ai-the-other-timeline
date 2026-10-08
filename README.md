@@ -4,7 +4,7 @@ An interactive narrative game prototype about how different AI choices shape the
 
 ## Play
 
-Open the GitHub Pages link in the repository description, or open `index.html` through any static web server.
+Open the live demo link in the repository description, or open `index.html` through any static web server.
 
 ## What to edit
 
@@ -18,6 +18,6 @@ Open the GitHub Pages link in the repository description, or open `index.html` t
 1. Create a branch for each change.
 2. Edit the relevant file and test the full story flow.
 3. Open a pull request and ask one teammate to review it.
-4. Merge into `main`; GitHub Pages will update automatically.
+4. Merge into `main`; then publish the tested build.
 
 The prototype uses scripted AI, simulated school data and simulated game scores. It does not present these as validated real-world evidence.
