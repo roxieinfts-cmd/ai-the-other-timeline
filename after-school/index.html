@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#262b44">
+  <meta name="description" content="AFTER SCHOOL — a cozy interactive story about one student, one afternoon, and the choices that fill it.">
+  <title>AFTER SCHOOL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pixelify+Sans:wght@500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="game" class="game-shell scene-title">
+    <section class="game-stage" aria-live="polite">
+      <div class="scene-art" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <button class="brand" id="mapButton" type="button" aria-label="Return to campus map">
+          <span class="micro">HORIZON SECONDARY</span>
+          <strong>AFTER SCHOOL</strong>
+        </button>
+
+        <div class="time-block" id="timeBlock" hidden>
+          <span>MONDAY</span>
+          <strong id="clock">3:40 PM</strong>
+        </div>
+
+        <div class="top-actions">
+          <button class="utility-button" id="journalButton" type="button" hidden>JOURNAL</button>
+          <button class="utility-button" id="soundButton" type="button" aria-pressed="false">SOUND OFF</button>
+        </div>
+      </header>
+
+      <section class="status-panel" id="statusPanel" hidden aria-label="Player status">
+        <div class="status-item project"><span>PROJECT</span><div><i id="projectBar"></i></div><b id="projectValue">10</b></div>
+        <div class="status-item connection"><span>CONNECTION</span><div><i id="connectionBar"></i></div><b id="connectionValue">50</b></div>
+        <div class="status-item personal"><span>PERSONAL</span><div><i id="personalBar"></i></div><b id="personalValue">20</b></div>
+      </section>
+
+      <section id="screen" class="screen"></section>
+
+      <footer class="stage-footer">
+        <p id="taskLine">A scripted interactive prototype. No live AI is used.</p>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </footer>
+    </section>
+  </main>
+
+  <dialog id="journalDialog" class="journal-dialog">
+    <div class="dialog-head">
+      <div><span class="micro">MONDAY'S TRACE</span><h2>Journal</h2></div>
+      <button class="utility-button" id="closeJournal" type="button">CLOSE</button>
+    </div>
+    <div id="journalContent" class="journal-content"></div>
+  </dialog>
+
+  <dialog id="phoneDialog" class="phone-dialog">
+    <div class="phone-shell">
+      <div class="phone-head"><span>MESSAGES</span><strong id="phoneClock">3:40</strong></div>
+      <div id="phoneContent" class="phone-content"></div>
+      <button class="phone-home" id="closePhone" type="button" aria-label="Close phone"></button>
+    </div>
+  </dialog>
+
+  <script src="content.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
