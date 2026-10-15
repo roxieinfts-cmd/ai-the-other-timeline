@@ -1,12 +1,80 @@
 window.AFTER_SCHOOL_CONTENT = {
   locations: {
-    library: { name: "Library", subtitle: "The opening slide is still blank.", scene: "library" },
-    court: { name: "Basketball Court", subtitle: "Jay said 5 PM. He is probably waiting.", scene: "court" },
-    home: { name: "Go Home", subtitle: "Your headphones and unfinished track are there.", scene: "home" },
-    phone: { name: "Phone", subtitle: "Messages, comments, and everything else.", scene: "map" }
+    library: { name: "Library", subtitle: "Study, research, or work on the group project.", scene: "library", icon: "▦" },
+    court: { name: "Covered Court", subtitle: "Train, play, or catch up with Jay before the afternoon rain.", scene: "court", icon: "●" },
+    canteen: { name: "Canteen / Hawker Centre", subtitle: "Chope a seat, eat, talk, and hear what is happening.", scene: "classroom", icon: "☕" },
+    transit: { name: "MRT / After-School Outing", subtitle: "Tap in for the mall, a movie, or an enrichment class across town.", scene: "map", icon: "▤" },
+    home: { name: "HDB Home", subtitle: "Homework, rest, music, and messages above the void deck.", scene: "home", icon: "⌂" }
+  },
+
+  dailyBriefs: [
+    { title: "The week begins", body: "The corridor is still warm after assembly. Friday's group presentation needs an opening, and Jay says the covered court is free—can or not?" },
+    { title: "A comment is waiting", body: "An afternoon thunderstorm is building. Maya has questions about the opening; better settle it before everyone goes blur like sotong." },
+    { title: "Midweek choices", body: "Your energy is not unlimited. Project work, friends, CCA, and the ride home all want a piece of the afternoon." },
+    { title: "Last rehearsal tomorrow", body: "The presentation is close. Paiseh or not, unfinished work will become harder to hide during rehearsal." },
+    { title: "Friday", body: "Presentation day. Steady lah—the goal is not perfect slides, but being able to explain what your group actually means." }
+  ],
+
+  activities: {
+    library: [
+      { id: "homework", label: "Finish regular homework", hint: "35 min · steady independent work", time: 35, energy: -8, effects: { project: 5 }, academic: { knowledgeMastery: 5, criticalThinking: 3 }, note: "You completed ordinary homework without outsourcing the thinking." },
+      { id: "ai_plan", label: "Plan your tasks", hint: "organise the workload and choose priorities", time: 35, energy: -3, effects: { personal: 3 }, note: "You organised the workload and chose what mattered first." },
+      { id: "research", label: "Check sources for the presentation", hint: "25 min · verify before using", time: 25, energy: -6, effects: { project: 8 }, academic: { criticalThinking: 6, academicIntegrity: 4 }, flags: ["verifiedSources"], note: "You checked where the presentation claims came from." }
+    ],
+    court: [
+      { id: "drills", label: "Practise shooting drills", hint: "30 min · costs energy", time: 30, energy: -12, effects: { personal: 8 }, activity: "basketballPracticeMinutes", note: "You practised until the shot began to feel automatic." },
+      { id: "jay_chat", label: "Talk with Jay", hint: "20 min · friendship and context", time: 20, energy: -2, effects: { connection: 7 }, relationship: ["jay", 5], note: "You and Jay talked without needing a game to fill the silence." },
+      { id: "ai_training", label: "Build a training plan", hint: "set goals and adapt them to your limits", time: 35, energy: -3, effects: { personal: 4 }, note: "You built a training plan around your goals and limits." }
+    ],
+    canteen: [
+      { id: "meal", label: "Get a proper meal", hint: "25 min · cai fan, noodles, or something that restores energy", time: 25, energy: 18, effects: { personal: 6 }, note: "You choped a seat, slowed down, and ate properly instead of calling bubble tea dinner." },
+      { id: "friends", label: "Sit with classmates", hint: "30 min · hear what others are carrying", time: 30, energy: 3, effects: { connection: 8 }, activity: "socialMinutes", note: "You stayed for the conversation instead of rushing through it." },
+      { id: "maya_checkin", label: "Check in with Maya", hint: "15 min · project relationship", time: 15, energy: -2, effects: { connection: 5, project: 3 }, relationship: ["maya", 5], note: "You asked Maya what she needed instead of guessing." }
+    ],
+    transit: [
+      { id: "mall", label: "Meet friends and walk around the mall", hint: "browse, eat, and spend unstructured time together", time: 55, energy: 4, effects: { connection: 10, personal: 5 }, activity: "socialMinutes", note: "You met your friends at the MRT exit, wandered through the mall, and let the afternoon be a little unplanned." },
+      { id: "movie", label: "Watch a movie", hint: "choose a film and switch off from school for a while", time: 120, energy: 10, effects: { personal: 12, connection: 4 }, activity: "restMinutes", note: "For the length of the film, the presentation and unread messages belonged to another world." },
+      { id: "tuition", label: "Go to an enrichment class", hint: "bring difficult questions and practise after school", time: 90, energy: -10, effects: { project: 7 }, activity: "independentStudyMinutes", academic: { knowledgeMastery: 7, criticalThinking: 3 }, note: "You brought specific questions to class and left with a clearer way to practise." }
+    ],
+    home: [
+      { id: "rest", label: "Rest without scrolling", hint: "30 min · ceiling fan on, phone face-down", time: 30, energy: 20, effects: { personal: 8 }, activity: "restMinutes", note: "With the ceiling fan turning and sounds drifting up from the void deck, you rested on purpose." },
+      { id: "family", label: "Spend time with family", hint: "35 min · strengthen connection", time: 35, energy: 5, effects: { connection: 8 }, note: "You were present for a conversation that would not appear on any report card." },
+      { id: "study", label: "Review tomorrow's material", hint: "30 min · independent study", time: 30, energy: -7, effects: { project: 4 }, activity: "independentStudyMinutes", academic: { knowledgeMastery: 5 }, note: "You reviewed until you could explain the idea without looking." }
+    ]
+  },
+
+  dailyTasks: {
+    maya: [
+      { id: "maya_mon", label: "Agree on the opening direction", sender: "MAYA · GROUP PROJECT", message: "Before tonight: story-first or data-first? Give one reason, can? Otherwise tomorrow confirm become rojak.", hint: "Discuss the purpose, then post your recommendation", time: 45, energy: -5, effects: { project: 8, connection: 4 }, academic: { criticalThinking: 4 }, relationship: ["maya", 4], note: "You contributed a reasoned recommendation for the group's opening." },
+      { id: "maya_tue", label: "Verify two claims and their sources", sender: "MAYA · GROUP PROJECT", message: "I highlighted two claims. Can trace them back to sources? One sounds a bit anyhow leh.", hint: "Check evidence before it reaches the final slides", time: 50, energy: -7, effects: { project: 10 }, academic: { academicIntegrity: 6, criticalThinking: 5 }, relationship: ["maya", 3], note: "You checked the group's claims against their original sources." },
+      { id: "maya_wed", label: "Turn research into speaking notes", sender: "MAYA · GROUP PROJECT", message: "Slides are too dense. Can you turn our section into notes we can actually say aloud?", hint: "Translate information into your own spoken explanation", time: 50, energy: -7, effects: { project: 10 }, academic: { knowledgeMastery: 6 }, relationship: ["maya", 3], note: "You converted research into speaking notes the group could explain." },
+      { id: "maya_thu", label: "Run the final fact-check", sender: "MAYA · GROUP PROJECT", message: "Final pass tonight: dates, numbers, image credits. Don't sabo us with one confident-but-wrong fact 😭", hint: "Catch unsupported or misleading details", time: 55, energy: -8, effects: { project: 12 }, academic: { academicIntegrity: 7, criticalThinking: 5 }, relationship: ["maya", 4], note: "You completed the final fact-check and documented what changed." },
+      { id: "maya_fri", label: "Prepare answers for likely questions", sender: "MAYA · GROUP PROJECT", message: "Presentation day. What might Ms Tan challenge us on? Add three questions and honest answers.", hint: "Prepare to explain, not merely display", time: 45, energy: -6, effects: { project: 10, connection: 3 }, academic: { knowledgeMastery: 7, criticalThinking: 5 }, relationship: ["maya", 5], note: "You prepared questions the group could answer from understanding rather than memory." }
+    ],
+    jay: [
+      { id: "jay_mon", label: "Confirm today's court plan", sender: "JAY · BASKETBALL", message: "Covered court at 5. Full game, short drills, or recovery? Can is can, just don't MIA 😂", hint: "Set an honest plan before arriving", time: 30, energy: -3, effects: { connection: 5 }, relationship: ["jay", 5], note: "You gave Jay a clear plan instead of leaving him guessing." },
+      { id: "jay_tue", label: "Review yesterday's shooting clip", sender: "JAY · BASKETBALL", message: "Sent the clip. Your landing damn dramatic sia. Pick ONE thing to fix, not everything.", hint: "Observe, choose, and test one adjustment", time: 40, energy: -5, effects: { personal: 7 }, relationship: ["jay", 3], note: "You reviewed the clip and chose one realistic adjustment." },
+      { id: "jay_wed", label: "Design a focused drill block", sender: "JAY · BASKETBALL", message: "We have one hour. What drills give us the most useful reps?", hint: "Balance intensity, repetition, and recovery", time: 45, energy: -6, effects: { personal: 8, connection: 3 }, relationship: ["jay", 4], note: "You designed a focused practice block with breaks and a clear goal." },
+      { id: "jay_thu", label: "Discuss team strategy", sender: "JAY · BASKETBALL", message: "Tomorrow's game: how do we handle their press? Send one idea the team can actually remember.", hint: "Make strategy understandable and usable", time: 40, energy: -5, effects: { connection: 6 }, relationship: ["jay", 5], note: "You contributed a simple team strategy and explained why it might work." },
+      { id: "jay_fri", label: "Choose game-day preparation", sender: "JAY · BASKETBALL", message: "Game day. Warm-up, food, ankle check, mindset—settle your plan then steady lah 🏀", hint: "Use information without ignoring your body", time: 35, energy: -3, effects: { personal: 8, connection: 4 }, relationship: ["jay", 5], note: "You made a game-day plan that accounted for energy and physical limits." }
+    ]
   },
 
   events: {
+    friday_deadline: {
+      scene: "classroom",
+      location: "CLASSROOM · FRIDAY DEADLINE",
+      speaker: "MS TAN",
+      portrait: "T",
+      title: "The opening cannot stay blank",
+      body: ["The presentation is next. Ms Tan gives your group a short final preparation window.", "There is no perfect option now, but the project still needs a decision you can stand behind."],
+      choices: [
+        { label: "Write a simple opening yourself", hint: "30 min · clear and explainable", time: 30, effects: { project: 18 }, flags: ["understandsOpening", "deadlineRecovery"], response: "It is plain, but every line belongs to the group and you can explain it.", note: "You used the final window to write an opening you understood.", complete: "library", next: "map" },
+        { label: "Use AI, then verify every claim", hint: "20 min · assisted, not automatic", time: 20, effects: { project: 16 }, flags: ["usedAiFeedback", "checkedClaim", "understandsOpening", "deadlineRecovery"], response: "You remove two unsupported phrases and keep the structure that helps.", note: "Under deadline pressure, you still verified the AI-assisted opening.", complete: "library", next: "map" },
+        { label: "Submit an unchecked AI opening", hint: "10 min · fastest, hard to defend", time: 10, effects: { project: 10, connection: -5 }, flags: ["usedAiDraft", "uncheckedClaim", "deadlineRecovery"], response: "The slide is no longer blank. Maya asks whether you can explain the second sentence.", note: "You filled the deadline gap with an unchecked AI draft.", complete: "library", next: "map" }
+      ]
+    },
+
     last_bell: {
       scene: "classroom",
       location: "CLASSROOM · 3:40 PM",
@@ -108,6 +176,8 @@ window.AFTER_SCHOOL_CONTENT = {
         "Jay is sitting on the floor, spinning the ball between his hands. He looks at the clock behind you before looking at you."
       ],
       choices: [
+        { label: "Use AI video analysis, then test one suggestion", hint: "One-hour block · AI assists, your body verifies", time: 25, effects: { connection: 8, personal: 8 }, flags: ["usedAiFeedback", "keptBasketballPromise", "checkedTrainingAdvice"], response: "The tool notices your landing angle. You try the adjustment slowly, then keep only the part that feels stable.", note: "You used AI video feedback as one observation and tested it safely on court.", complete: "court", next: "map" },
+        { label: "Generate a full routine and follow it exactly", hint: "One-hour block · fastest plan, least context", time: 15, effects: { personal: 2, connection: -2 }, flags: ["usedAiDraft", "uncheckedTrainingAdvice"], response: "The routine looks professional, but it does not know about yesterday's sore ankle or today's wet floor.", note: "You followed an AI routine without adapting it to your body or the court.", complete: "court", next: "map" },
         { label: "Stay for the full game", hint: "75 min · be fully here", time: 75, effects: { connection: 20, personal: -10 }, flags: ["playedFullGame", "keptBasketballPromise"], response: "For twenty minutes, you keep thinking about the slides. Then someone passes you the ball, and you stop.", note: "You stayed for a full game with Jay.", complete: "court", next: "map" },
         { label: "Play one short game", hint: "35 min · keep the evening moving", time: 35, effects: { connection: 10, personal: -5 }, flags: ["playedShortGame", "keptBasketballPromise"], response: "Jay points at the clock. “Thirty-five minutes. I’m timing you.”", note: "You played one short game before leaving.", complete: "court", next: "map" },
         { label: "Sit and watch for a while", hint: "20 min · talk without committing to a game", time: 20, effects: { connection: 6, personal: 2 }, flags: ["watchedGame"], response: "Jay laughs. “Watching us is probably more stressful than playing.”", note: "You stayed with Jay for a while without joining the game.", complete: "court", next: "map" },
@@ -140,6 +210,7 @@ window.AFTER_SCHOOL_CONTENT = {
         "The music track on your laptop is twenty-eight seconds long. It has been twenty-eight seconds long for three weeks."
       ],
       choices: [
+        { label: "Ask AI for three musical directions, then compose one", hint: "One-hour block · inspiration without surrendering authorship", time: 25, effects: { personal: 18 }, flags: ["usedAiFeedback", "advancedPersonalProject"], response: "Two suggestions feel generic. The third gives you a rhythm you reshape until it sounds like yours.", note: "You used AI for musical prompts, then composed and edited the result yourself.", complete: "home", next: "map" },
         { label: "Add a new section", hint: "50 min · make something new", time: 50, effects: { personal: 25 }, flags: ["advancedPersonalProject"], response: "The track is no longer twenty-eight seconds long. You replay the new section twice.", note: "You added a new section to your personal music project.", complete: "home", next: "map" },
         { label: "Clean up what already exists", hint: "30 min · quieter progress", time: 30, effects: { personal: 15 }, flags: ["cleanedPersonalProject"], response: "Nothing new appears, but the parts that were already there finally fit together.", note: "You refined the part of your personal project that already existed.", complete: "home", next: "map" },
         { label: "Listen once and close it", hint: "10 min · stay connected without committing", time: 10, effects: { personal: 2 }, flags: ["heardPersonalProject"], response: "For twenty-eight seconds, the room belongs to the track. Then the tab closes.", note: "You listened to your unfinished track before closing it.", complete: "home", next: "map" }
@@ -225,7 +296,7 @@ window.AFTER_SCHOOL_CONTENT = {
       id: "compromise",
       title: "The Compromise",
       test: "default",
-      text: ["Nothing is completely finished. Something moved forward in every part of your evening.", "It does not feel like winning. It also does not feel like losing. It feels like Monday."],
+      text: ["Nothing is completely finished. Something moved forward in every part of your week.", "It does not feel like winning. It also does not feel like losing. It feels like a real week."],
       reflection: "You kept several promises, even if none of them received all your time."
     }
   ]

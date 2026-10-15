@@ -34,9 +34,15 @@
       </header>
 
       <section class="status-panel" id="statusPanel" hidden aria-label="Player status">
+        <button class="status-toggle" id="statusToggle" type="button" aria-expanded="true" aria-controls="statusMetrics">
+          <span>STATUS</span><b aria-hidden="true">−</b>
+        </button>
+        <div class="status-metrics" id="statusMetrics">
+        <div class="status-item energy"><span>ENERGY</span><div><i id="energyBar"></i></div><b id="energyValue">80</b></div>
         <div class="status-item project"><span>PROJECT</span><div><i id="projectBar"></i></div><b id="projectValue">10</b></div>
         <div class="status-item connection"><span>CONNECTION</span><div><i id="connectionBar"></i></div><b id="connectionValue">50</b></div>
         <div class="status-item personal"><span>PERSONAL</span><div><i id="personalBar"></i></div><b id="personalValue">20</b></div>
+        </div>
       </section>
 
       <section id="screen" class="screen"></section>
@@ -50,7 +56,7 @@
 
   <dialog id="journalDialog" class="journal-dialog">
     <div class="dialog-head">
-      <div><span class="micro">MONDAY'S TRACE</span><h2>Journal</h2></div>
+      <div><span class="micro">THIS WEEK'S TRACE</span><h2>Journal</h2></div>
       <button class="utility-button" id="closeJournal" type="button">CLOSE</button>
     </div>
     <div id="journalContent" class="journal-content"></div>
